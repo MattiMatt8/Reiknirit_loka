@@ -16,6 +16,6 @@ integer | ArrayList Route | string | integer | integer
 * #### Route: 
 
 Route ID | from | fromPlatform | leaves | to | toPlatform | arrives
----- | -------- | --- | ----  | -- | --  
+---- | -------- | --- | ----  | -- | --  | --  
 integer | station | integer | time long | station | integer | long time  
 

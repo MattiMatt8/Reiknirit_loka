@@ -1,32 +1,21 @@
 
 ### Train Booking System
 
-* #### TrainStation:
+* #### Station:
 
-longitude | latitude | name | address | open hours | trains
---------- | -------- | ---- | ------- | ---------- | ------
- double   |  double  | string | class | hash map | list class ->
-
-* #### Address: 
-
-country | city | zipcode | address
-------- | ---- | ------- | --------
- string | string | integer | string
+name | latitude | longitude | open hours | trains list
+---- | --------- | -------- | ---------- | ------
+string | double   |  double | hash map | ArrayList Train
  
 * #### Train: 
 
-TrainID | destinations/route and at what time | type | capacity 
--- | -- | ---- | -------- 
-integer | class | string | integer  
+TrainID | Route list | type | Standard Seating | First Class Seating 
+-- | -- | ---- | -------- | --
+integer | ArrayList Route | string | integer | integer
 
 * #### Route: 
 
-name | stations(right arrangement and when train comes and leaves) | length(how long average)
----- | ----------------------------------------------------------- | ------------------------
-string |                   Destination   			               |       double
+Route ID | from | fromPlatform | leaves | to | toPlatform | arrives
+---- | -------- | --- | ----  | -- | --  
+integer | station | integer | time long | station | integer | long time  
 
-* #### Destination: 
-
-TrainStation | comes | leaves
------------- | ----- | -------
-TrainStation | long integer | long integer

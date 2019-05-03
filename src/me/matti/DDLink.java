@@ -87,9 +87,9 @@ public class DDLink {
 		this.tail = null;
 	}
 	
-	public boolean add(int id, Train train, Route route, Station station) {
+	public boolean add(int id, Train train, Route route) {
 		if (this.find(id) != null) return false;
-		Node node = new Node(new Booking(id, train, route, station));
+		Node node = new Node(new Booking(id, train, route));
 		if (this.head == null) {
 			this.head = node;
 			this.tail = this.head;

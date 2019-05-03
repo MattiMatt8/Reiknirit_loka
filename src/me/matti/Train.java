@@ -35,6 +35,14 @@ public class Train {
 			r.print();
 		}
 	}
+
+	public boolean checkRoute(Route route) {
+		for (int i = 0; i < this.route.size(); i++) {
+			Route r = this.route.get(i);
+			if (r == route) return true;
+		}
+		return false;
+	}
 	
 	public boolean addRoute(Route route) {
 		for (int i = 0; i < this.route.size(); i++) {

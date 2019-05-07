@@ -19,18 +19,13 @@ public class Booking {
 	public void print() {
 		System.out.println();
 		System.out.println("==========================");
-		System.out.println("  BookingID: " + id);
+		System.out.println(" * BookingID: " + id);
 		System.out.println("==========================");
-		System.out.println("  Reserved Seats");
-		System.out.println("==========================");
+		System.out.println(" Reserved Seats");
 		System.out.println(" Standard: " + stReserved);
 		System.out.println(" First Class: " + fcReserved);
-		System.out.println("==========================");
-		System.out.println("  Train");
-		train.printBasic();
-		System.out.println("==========================");
-		System.out.println("  Route");
-		route.print();
+		train.printBasic("- ");
+		route.print("- ");
 	}
 	
 	public int reserveSt(int total) {
@@ -106,8 +101,13 @@ public class Booking {
 	public Route getRoute() {
 		return route;
 	}
-	
-	
-	
+
+	public void setTrain(Train train) {
+		this.train = train;
+	}
+
+	public void setRoute(Route route) {
+		this.route = route;
+	}
 	
 }

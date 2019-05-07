@@ -14,50 +14,51 @@ public class Station {
 	private HashMap<String, HashMap<String,Date>> openHours; // hashmap open hours {"Monday":{"opens":long time,"closes":long time}}
 	private ArrayList<Train> trains; // Class Address list
 	
-	private ArrayList<String> dagar = new ArrayList<String>() {
+	private static ArrayList<String> dagar = new ArrayList<String>() {
 		{
-			add("Mánudagur");
-			add("Þriðjudagur");
-			add("Miðvikudagur");
-			add("Fimmtudagur");
-			add("Föstudagur");
-			add("Laugardagur");
-			add("Sunnudagur");
+			add("Monday");
+			add("Tuesday");
+			add("Wednesday");
+			add("Thursday");
+			add("Friday");
+			add("Saturday");
+			add("Sunday");
 		}	
 	};
 	
-	public Station(String name, double longitude, double latitude, HashMap<String, HashMap<String, Date>> openHours) {
+	public Station(String name, double latitude, double longitude, HashMap<String, HashMap<String, Date>> openHours) {
 		this.name = name;
-		this.latitude = latitude;
 		this.longitude = longitude;
+		this.latitude = latitude;
 		this.openHours = openHours;
 		this.trains = new ArrayList<Train>();
 	}
 	
 	public void printBasic() {
 		System.out.println("==========================");
-		System.out.println(" Name: " + name);
+		System.out.println(" * Name: " + name);
+		System.out.println("==========================");
 		System.out.println(" Latitude: " + latitude);
 		System.out.println(" Longitude: " + longitude);
-		System.out.println("==========================");
-		System.out.println("  Open Hours");
-		System.out.println("==========================");
+		System.out.println("--------------------------");
+		System.out.println("-  Open Hours");
+		System.out.println("--------------------------");
 		for (int i = 0; i < dagar.size(); i++) {
 			String d = dagar.get(i);
 			HashMap<String,Date> sd = openHours.get(d);
-			System.out.println(" " + d + ":");
-			System.out.println(" - Opnar: " + Main.sdf.format(sd.get("Opnar")));
-			System.out.println(" - Lokar: " + Main.sdf.format(sd.get("Lokar")));
+			System.out.println("  " + d + ":");
+			System.out.println("  - Opens: " + Main.sdf.format(sd.get("Opens")));
+			System.out.println("  - Closes: " + Main.sdf.format(sd.get("Closes")));
 		}
 	}
 	
 	public void print() {
 		printBasic();
-		System.out.println("==========================");
-		System.out.println("  Trains");
+		System.out.println("--------------------------");
+		System.out.println("-  Trains");
 		for (int i = 0; i < trains.size(); i++) {
 			Train t = trains.get(i);
-			t.print();
+			t.print(this);
 		}
 	}
 	
@@ -90,6 +91,7 @@ public class Station {
 		return trains;
 	}
 
-	
-	
+	public static ArrayList<String> getDagar() {
+		return dagar;
+	}
 }

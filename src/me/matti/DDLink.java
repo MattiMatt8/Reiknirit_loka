@@ -1,6 +1,10 @@
 package me.matti;
 
+import java.util.ArrayList;
+
 public class DDLink {
+
+	private static ArrayList<Booking> bDump = new ArrayList<Booking>();
 	
 	private class Node {
 		
@@ -44,7 +48,7 @@ public class DDLink {
 		}
 		
 		public Booking find(int id) {
-			if (this.data.getId() == id) { // =============
+			if (this.data.getId() == id) {
 				return this.data;
 			}
 			else if (this.next != null) {
@@ -53,10 +57,16 @@ public class DDLink {
 			return null;
 		}
 		
+		public void dump() {
+			bDump.add(data);
+			if (next == null) return;
+			next.dump();
+		}
+		
 		public Node getLast() {
 			return last;
 		}
-
+		
 		public void setLast(Node last) {
 			this.last = last;
 		}
@@ -138,4 +148,11 @@ public class DDLink {
 		this.head.print();
 	}
 	
+	public ArrayList<Booking> dump() {
+		if (this.head == null) {
+			return null;
+		}
+		head.dump();
+		return bDump;
+	}
 }

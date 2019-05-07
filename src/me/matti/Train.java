@@ -18,21 +18,38 @@ public class Train {
 		this.route = new ArrayList<Route>();
 	}
 	
-	public void printBasic() {
-		System.out.println("==========================");
-		System.out.println(" TrainID: " + trainID);
-		System.out.println(" Type: " + type);
-		System.out.println(" Standard Seats: " + stSeating);
-		System.out.println(" First Class Seats: " + fcSeating);
+	public void printBasic(String msg) {
+		System.out.println("--------------------------");
+		System.out.println(msg + " * TrainID: " + trainID);
+		System.out.println("--------------------------");
+		System.out.println(msg + " Type: " + type);
+		System.out.println(msg + " Standard Seats: " + stSeating);
+		System.out.println(msg + " First Class Seats: " + fcSeating);
 	}
 	
 	public void print() {
-		printBasic();
+		System.out.println();
 		System.out.println("==========================");
-		System.out.println("  Routes");
+		System.out.println(" * TrainID: " + trainID);
+		System.out.println("==========================");
+		System.out.println(" Type: " + type);
+		System.out.println(" Standard Seats: " + stSeating);
+		System.out.println(" First Class Seats: " + fcSeating);
+		System.out.println("--------------------------");
+		System.out.println("-  Routes");
 		for (int i = 0; i < route.size(); i++) {
 			Route r = route.get(i);
-			r.print();
+			r.print("- ");
+		}
+	}
+	
+	public void print(Station station) {
+		printBasic("- ");
+		System.out.println("--------------------------");
+		System.out.println("-  Routes");
+		for (int i = 0; i < route.size(); i++) {
+			Route r = route.get(i);
+			if (r.getFrom() == station) r.print("- ");
 		}
 	}
 

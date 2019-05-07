@@ -23,14 +23,30 @@ public class Route {
 	}
 	
 	public void print() {
-		System.out.println("==========================");
-		System.out.println(" RouteID: " + routeID);
-		System.out.println(" From: " + from.getName());
-		System.out.println("  Platform: " + fromPlatform);
-		System.out.println("  Leaves: " + Main.sdf.format(leaves));
-		System.out.println(" To: " + to.getName());
-		System.out.println("  Platform: " + toPlatform);
-		System.out.println("  Arrives: " + Main.sdf.format(arrives));
+		print("");
+	}
+	
+	public void print(String msg) {
+		if (msg.equals("")) {
+			System.out.println();
+			System.out.println("==========================");
+		}
+		else {
+			System.out.println("--------------------------");
+		}
+		System.out.println(msg + " * RouteID: " + routeID);
+		if (msg.equals("")) {
+			System.out.println("==========================");
+		}
+		else {
+			System.out.println("--------------------------");
+		}
+		System.out.println(msg + " From: " + from.getName());
+		System.out.println(msg + "  Platform: " + fromPlatform);
+		System.out.println(msg + "  Leaves: " + Main.sdf.format(leaves));
+		System.out.println(msg + " To: " + to.getName());
+		System.out.println(msg + "  Platform: " + toPlatform);
+		System.out.println(msg + "  Arrives: " + Main.sdf.format(arrives));
 	}
 
 	public int getRouteID() {

@@ -32,7 +32,6 @@ public class Read {
 				tmp.put(split[1], Main.tf(split[2]));
 				tmp.put(split[3], Main.tf(split[4]));
 				hours.add(tmp);
-				
 				line = br.readLine();
 			}
 			
@@ -40,7 +39,7 @@ public class Read {
 			fr.close();
 			
 		} catch (Exception e) {
-			System.out.println(" ** Villa við lestur á gögnum **");
+			System.out.println(" ** Villa við lestur á gögnum hours.csv **");
 		}
 	}
 	public static void dayHours() {
@@ -60,7 +59,6 @@ public class Read {
 				for (int i = 1; i < split.length; i+=2) {
 					String s = split[i];
 					int t = Main.toIntSilent(split[i+1]);
-					
 					tmp.put(s, hours.get(t));
 				}
 				
@@ -72,7 +70,7 @@ public class Read {
 			fr.close();
 			
 		} catch (Exception e) {
-			System.out.println(" ** Villa við lestur á gögnum **");
+			System.out.println(" ** Villa við lestur á gögnum dayhours.csv **");
 		}
 	}
 	public static void stations() {
@@ -95,7 +93,7 @@ public class Read {
 			fr.close();
 			
 		} catch (Exception e) {
-			System.out.println(" ** Villa við lestur á gögnum **");
+			System.out.println(" ** Villa við lestur á gögnum stations.csv **");
 		}
 	}
 	public static void routes() {
@@ -117,7 +115,7 @@ public class Read {
 			fr.close();
 			
 		} catch (Exception e) {
-			System.out.println(" ** Villa við lestur á gögnum **");
+			System.out.println(" ** Villa við lestur á gögnum routes.csv **");
 		}
 	}
 	public static void trains() {
@@ -154,7 +152,7 @@ public class Read {
 			fr.close();
 			
 		} catch (Exception e) {
-			System.out.println(" ** Villa við lestur á gögnum **");
+			System.out.println(" ** Villa við lestur á gögnum trains.csv **");
 		}
 	}
 	public static void booking() {
@@ -177,7 +175,7 @@ public class Read {
 			fr.close();
 			
 		} catch (Exception e) {
-			System.out.println(" ** Villa við lestur á gögnum **");
+			System.out.println(" ** Villa við lestur á gögnum booking.csv **");
 		}
 	}
 }

@@ -229,7 +229,7 @@ public class Main {
 				}
 				else if (val.equals("4")) { // Manage bookings
 					while(true) {
-						String val2 = print(new String[]{"Add booking","Modify booking","Delete booking"});
+						String val2 = print(new String[]{"Add booking","Modify booking","Delete booking","Find booking","Sort bookings"});
 						if (val2.equals("1")) { // Add new booking
 							while(true) {
 								System.out.println("==========================");
@@ -294,6 +294,14 @@ public class Main {
 									continue;
 								}
 								
+								if (booking.find(train, route)) {
+									String tryAgain = error("Booking already exists");
+									if (tryAgain.equalsIgnoreCase("no")) {
+										break;
+									}
+									continue;
+								}
+								
 								booking.add(bIDn, train, route);
 								System.out.println();
 								System.out.println(" ** Booking was added");
@@ -305,7 +313,7 @@ public class Main {
 						else if (val2.equals("2")) { // Modify booking
 							while(true) {
 								System.out.println("==========================");
-								System.out.println("  Modify boooking");
+								System.out.println("  Modify booking");
 								System.out.println("  Fill in the field");
 								System.out.println("==========================");
 								System.out.print(" Booking ID: ");
@@ -354,6 +362,14 @@ public class Main {
 											continue;
 										}
 										
+										if (booking.find(train, b.getRoute())) {
+											String tryAgain = error("Booking already exists");
+											if (tryAgain.equalsIgnoreCase("no")) {
+												break;
+											}
+											continue;
+										}
+										
 										b.setTrain(train);
 										System.out.println();
 										System.out.println(" ** Train updated");
@@ -382,6 +398,14 @@ public class Main {
 										}
 										if (!b.getTrain().checkRoute(route)) {
 											String tryAgain = error("Invalid route selected");
+											if (tryAgain.equalsIgnoreCase("no")) {
+												break;
+											}
+											continue;
+										}
+										
+										if (booking.find(b.getTrain(), route)) {
+											String tryAgain = error("Booking already exists");
 											if (tryAgain.equalsIgnoreCase("no")) {
 												break;
 											}
@@ -435,6 +459,14 @@ public class Main {
 											}
 											continue;
 										}
+										
+										if (booking.find(train, route)) {
+											String tryAgain = error("Booking already exists");
+											if (tryAgain.equalsIgnoreCase("no")) {
+												break;
+											}
+											continue;
+										}
 
 										b.setRoute(route);
 										b.setTrain(train);
@@ -457,7 +489,7 @@ public class Main {
 						else if (val2.equals("3")) { // Delete booking
 							while(true) {
 								System.out.println("==========================");
-								System.out.println("  Delete boooking");
+								System.out.println("  Delete booking");
 								System.out.println("  Fill in the field");
 								System.out.println("==========================");
 								System.out.print(" Booking ID: ");
@@ -482,7 +514,48 @@ public class Main {
 								break;
 							}
 						}
-						else if (val2.equals("4")) { // Quit
+						else if (val2.equals("4")) { // Find booking
+							while(true) {
+								System.out.println("==========================");
+								System.out.println("  Find booking");
+								System.out.println("  Fill in the field");
+								System.out.println("==========================");
+								System.out.print(" Booking ID: ");
+								String bID = sc.nextLine();
+								
+								int bIDn = toInt(bID);
+								if (bIDn == -1) break;
+								if (bIDn == -2) continue;
+								
+								Booking b = booking.find(bIDn);
+								if (b == null) {
+									String tryAgain = error("Booking not found");
+									if (tryAgain.equalsIgnoreCase("no")) {
+										break;
+									}
+									continue;
+								}
+								b.print();
+								break;
+							}
+						}
+						else if (val2.equals("5")) { // Sort bookings
+							while(true) {
+								boolean worked = booking.sort();
+								System.out.println();
+								if (worked) {
+									System.out.println(" ** Bookings were");
+									System.out.println(" ** successfully sorted");
+								}
+								else {
+									System.out.println(" ** No bookings");
+									System.out.println(" ** to sort");
+								}
+								System.out.println();
+								break;
+							}
+						}
+						else if (val2.equals("6")) { // Quit
 							break;
 						}
 						else {

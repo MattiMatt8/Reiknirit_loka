@@ -57,10 +57,33 @@ public class DDLink {
 			return null;
 		}
 		
+		public boolean find(Train train, Route route) {
+			if (data.getTrain() == train && data.getRoute() == route) {
+				return true;
+			}
+			else if (next == null) {
+				return false;
+			}
+			return next.find(train, route);
+		}
+		
 		public void dump() {
 			bDump.add(data);
 			if (next == null) return;
 			next.dump();
+		}
+		
+		public boolean sort() {
+			if (next == null) {
+				return true;
+			}
+			else if (data.getId() > next.data.getId()) {
+				Booking tmp = data;
+				data = next.data;
+				next.data = tmp;
+				return false;
+			}
+			return next.sort();
 		}
 		
 		public Node getLast() {
@@ -138,6 +161,23 @@ public class DDLink {
 			return null;
 		}
 		return this.head.find(id);
+	}
+	
+	public boolean find(Train train, Route route) {
+		if (this.head == null) {
+			return false;
+		}
+		return head.find(train, route);
+	}
+	
+	public boolean sort() {
+		if (head == null) {
+			return false;
+		}
+		if (!head.sort()) {
+			sort();
+		}
+		return true;
 	}
 	
 	public void print() {

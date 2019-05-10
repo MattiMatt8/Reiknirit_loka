@@ -165,7 +165,7 @@ public class Write {
 			for (int i = 0; i < bDump.size(); i++) {
 				Booking b = bDump.get(i);
 				
-				pw.println(b.getId() + ";" + b.getTrain().getTrainID() + ";" + b.getRoute().getRouteID());
+				pw.println(b.getId() + ";" + b.getTrain().getTrainID() + ";" + b.getRoute().getRouteID() + ";" + b.getStReserved()  + ";" + b.getFcReserved());
 			}
 			
 			pw.flush();

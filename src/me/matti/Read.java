@@ -28,7 +28,7 @@ public class Read {
 			while (line != null) {
 				String[] split = line.split(";");
 				
-				HashMap<String,Date> tmp = new HashMap<String,Date>();
+				HashMap<String,Date> tmp = new HashMap<>();
 				tmp.put(split[1], Main.tf(split[2]));
 				tmp.put(split[3], Main.tf(split[4]));
 				hours.add(tmp);
@@ -54,7 +54,7 @@ public class Read {
 			while (line != null) {
 				String[] split = line.split(";");
 				
-				HashMap<String, HashMap<String,Date>> tmp = new HashMap<String, HashMap<String,Date>>();
+				HashMap<String, HashMap<String,Date>> tmp = new HashMap<>();
 
 				for (int i = 1; i < split.length; i+=2) {
 					String s = split[i];
@@ -167,6 +167,9 @@ public class Read {
 				String[] split = line.split(";");
 				
 				booking.add(Main.toIntSilent(split[0]), Main.getTrain(Main.toIntSilent(split[1])), Main.getRoute(Main.toIntSilent(split[2])));
+				Booking b = booking.find(Main.toIntSilent(split[0]));
+				b.reserveSt(Main.toIntSilent(split[3]));
+				b.reserveFc(Main.toIntSilent(split[4]));
 				
 				line = br.readLine();
 			}
